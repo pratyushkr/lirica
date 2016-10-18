@@ -160,7 +160,7 @@ else:
     Edit the copied file.
   </p></li><li><?php
 endif; ?><p>
-    Send a test message to make sure your customizations worked.
+    Send a test message to make sure your customizations worked. and test whether chages has been refleced or not.
   </p></li><li><p>
     If you think your customizations would be of use to others,
     please contribute your file as a feature request in the
