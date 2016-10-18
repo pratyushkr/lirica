@@ -97,12 +97,9 @@
  *
  * References
  *
- * 1. http://drupal.org/project/htmlmail
- * 2. http://drupal.org/project/htmlmail
- * 3. http://api.drupal.org/api/drupal/includes--mail.inc/function/drupal_mail/7
- * 4. http://api.drupal.org/api/drupal/includes--mail.inc/function/drupal_mail/7
- * 5. http://drupal.org/project/echo
- * 6. http://api.drupal.org/api/drupal/modules--system--theme.api.php/function/hook_preprocess_HOOK/7
+ Heloo user I am pratyush kumar.
+ HAve a nice coding.
+ All the best.
  *
  * =========================================================== End instructions.
  */
