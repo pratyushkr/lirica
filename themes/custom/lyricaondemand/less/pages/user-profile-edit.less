@@ -1,0 +1,83 @@
+/****************************************
+ ----------------------------------------
+ CSS FOR USER PROFILE EDIT PAGE STARTS HERE
+ ----------------------------------------
+ ***************************************/
+ @import url('../common.less');
+.account-info {
+	h1 {
+		.FSAlbert;
+ 		color: @dark_blue;
+ 		font-size: 34.26px;
+ 		@media @mobile {
+ 			font-size: 23.14px;
+ 		}
+	}
+	#user-profile-form > div {
+		.FSAlbert;
+		.fullwidth;
+		font-size: 18.5px;
+		.form-wrapper, .form-type-password-confirm {
+			.form-item {
+				label {
+					.fl;
+					.clrbth;
+					color: @blue;
+					width: 25%;
+					max-width: 180px;
+					font-weight: normal;
+					margin: 1.6% 0;
+					line-height: normal;
+				}
+				input {
+					.fl;
+					.bgnone;
+					border: 1px solid #cdcdcd;
+					border-radius: 3px;
+					width: 25%;
+					max-width: 262px;
+				    height: 35px;
+	    			padding: 0 1.3%;
+	    			margin: 1% 0;
+				    color: #959595;
+				    @media @mobile {
+				    	width: 42%;
+				    	height: 30px;
+				    }
+				}
+				.error:not(input) {
+					.fl;
+					.bgnone;
+					width: 50%;
+					line-height: normal;
+					padding: 1.6% 0 1.6% 2%;
+				}
+			}
+		}
+		.curr-pwd-note {
+			.clrbth;
+			line-height: normal;
+			margin-bottom: 3%;
+		}
+		.form-actions.form-wrapper {
+			.clrbth;
+			padding-top: 2%;
+			#edit-submit {
+				.bordernone;
+			    color: @white;
+			    text-transform: uppercase;
+				width: 96%;
+				max-width: 102px;
+				height: 30px;
+				background-color: @blue;
+				border-radius: 4px;
+			}
+			@media @mobile {
+				font-size: 14.5px;
+			}
+		}
+		@media @mobile {
+			font-size: 10.5px;
+		}
+	}
+}

@@ -1,0 +1,183 @@
+<?php
+/**
+ * Implements hook_menu().
+ */
+function pfe_popup_menu() {
+  $items = array();
+
+  $items['user/register/%ctools_js'] = array(
+    'page callback' => 'pfe_popup_register_callback',
+    'page arguments' => array(1),
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+  );
+  
+  $items['contact/admin/%ctools_js'] = array(
+    'page callback' => 'pfe_popup_contact_admin_callback',
+    'page arguments' => array(1),
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+  );
+
+  $items['user/password/%ctools_js'] = array(
+    'page callback' => 'pfe_popup_password_callback',
+    'page arguments' => array(1),
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
+}
+
+/**
+ * Ajax menu callback.
+ */
+function pfe_popup_register_callback($ajax) {
+  if ($ajax) {
+    ctools_include('ajax');
+    ctools_include('modal');
+	ctools_add_js('ajax-responder');
+
+    $form_state = array(
+      'ajax' => TRUE,
+    );
+
+    // Use ctools to generate ajax instructions for the browser to create
+    // a form in a modal popup.
+    $output = ctools_modal_form_wrapper('user_register_form', $form_state);
+	//watchdog('user register' , '<pre>' . print_r($output, true) . '</pre>');
+    // If the form has been submitted, there may be additional instructions
+    // such as dismissing the modal popup.
+    if (!empty($form_state['ajax_commands'])) {
+      $output = $form_state['ajax_commands'];
+    }
+	
+	if (!empty($form_state['executed'])) {
+		$output[] = ctools_modal_command_dismiss(); //Close modal automatically
+		$output[] = ctools_ajax_command_reload(); //reload parent window
+	}
+
+    // Return the ajax instructions to the browser via ajax_render().
+    print ajax_render($output);
+    drupal_exit();
+  }
+  else {
+    return drupal_get_form('user_register_form');
+  }
+}
+
+/**
+ * Ajax menu callback.
+ */
+function pfe_popup_password_callback($ajax) {
+  if ($ajax) {
+    ctools_include('ajax');
+    ctools_include('modal');
+	ctools_add_js('ajax-responder');
+
+    $form_state = array(
+      'ajax' => TRUE,
+    );
+
+	module_load_include('inc', 'user', 'user.pages');
+
+    // Use ctools to generate ajax instructions for the browser to create
+    // a form in a modal popup.
+	$output = ctools_modal_form_wrapper('user_pass', $form_state);
+
+    // If the form has been submitted, there may be additional instructions
+    // such as dismissing the modal popup.
+    if (!empty($form_state['ajax_commands'])) {
+      $output = $form_state['ajax_commands'];
+    }
+	
+	if (!empty($form_state['executed'])) {
+	  $render = '<div class="modal-content"><div class="popup-form request-sent-popup"><div>Request has been sent.</div><input type="button" class="close-popup-button" value="Close"></div></div>';
+	  $output[] = ajax_command_replace('#modal-content', $render);
+	}
+
+    // Return the ajax instructions to the browser via ajax_render().
+    print ajax_render($output);
+    drupal_exit();
+  }
+  else {
+	  return drupal_get_form('user_pass');
+  }
+}
+
+/**
+ * Ajax menu callback.
+ */
+function pfe_popup_contact_admin_callback($ajax) {
+  global $language, $user;
+    watchdog('user register' , '<pre>' . print_r($user, true) . '</pre>');
+	if(isset($user->uid) && $user->uid != 0) {
+		$user_details = user_load($user->uid);
+		if(isset($user->mail) && !empty($user->mail)) {
+			$to = variable_get('lyrica_on_demand_email_webform_nid', 'Jerrold.McRae@pfizer.com');
+			$from = $user->mail;
+			$name = ((!empty($user_details->field_name['und']['0']['value'])) ? $user_details->field_name['und']['0']['value'] : '');
+			$email = ((!empty($user->mail)) ? $user->mail : '');
+			$job_title = ((!empty($user_details->field_job_title['und']['0']['value'])) ? $user_details->field_job_title['und']['0']['value'] : '');
+			$organization = ((!empty($user_details->field_organization['und']['0']['value'])) ? $user_details->field_organization['und']['0']['value'] : '');
+			$zip_code = ((!empty($user_details->field_zip_code['und']['0']['value'])) ? $user_details->field_zip_code['und']['0']['value'] : '');
+			$params = array(
+							'headers' => array('Content-Type' => 'text/html; charset=UTF-8; format=flowed','X-Mailer' => 'Drupal', 'Content-Type' => 'text/plain; charset=UTF-8;', 'From' => $from, 'Sender' => $from,'Return-Path' => $from, 'Errors-To' => $from),
+							'subject' => variable_get('lyrica_on_demand_email_subject_webform_nid', 'PfizerPainVideos.com KAM/MOS Request'),
+							'key' => 'contact_administration',
+							'body' => theme('pfe_popup_mail_template', array(
+								'data' => array(
+									'name' => $name,
+									'e_mail' => $email,
+									'job_title' => $job_title,
+									'organization' => $organization,
+									'zip_code' => $zip_code,
+								)))
+			);
+		    $message = drupal_mail('pfe_popup', 'contact_administration', $to, $language, $params, $from, TRUE);
+			watchdog('mail' , '<pre>' . print_r($message, true) . '</pre>');
+		}
+	}
+if ($ajax) {
+	ctools_include('ajax');
+	ctools_include('modal');
+	ctools_add_js('ajax-responder');
+	
+	// Use ctools to generate ajax instructions for the browser to create
+	// a form in a modal popup.
+	$output = '<div class="modal-content"><div class="popup-form request-sent-popup"><div>Request has been sent.</div><input type="button" class="close-popup-button" value="Close"></div></div>';
+	$return[] = ctools_modal_command_display(t('PoPUp'), $output);
+	// Return the ajax instructions to the browser via ajax_render().
+	print ajax_render($return);
+	drupal_exit();
+	}
+	else {
+    	return $return;
+	}
+}
+
+// function pfe_popup_mail_alter(&$message) {
+ // $message['headers']['Sender'] = $message['headers']['Return-Path'] = $message['headers']['Errors-To'] = $message['headers']['From'];
+ // watchdog('mail headers' , '<pre>' . print_r($message['headers'], true) . '</pre>');
+// }
+
+function pfe_popup_theme() {
+    $path = drupal_get_path('module', 'pfe_popup') . '/templates';
+    return array(
+        'pfe_popup_mail_template' => array(
+        'template' => 'email-template', //note that there isn't an extension on here, it assumes .tpl.php
+        'arguments' => array('message' => ''), //the '' is a default value
+        'path' => $path
+      ),
+    );
+}
+
+function pfe_popup_mail($key, &$message, $params) {
+	if($key === 'contact_administration' ) {
+		$message['headers'] = $params['headers'];
+		$message['subject'] = $params['subject'];
+		$message['body'][] = $params['body'];
+		//$message['headers']['Sender'] = $message['headers']['Return-Path'] = $message['headers']['Errors-To'] = $message['headers']['From'];
+		watchdog('mail params' , '<pre>' . print_r($message, true) . '</pre>');
+	}
+}

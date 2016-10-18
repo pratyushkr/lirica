@@ -1,0 +1,104 @@
+/*****************************************************************
+------------------------------------------------------------------
+Project Name: 
+Date:
+UI Developer:
+UI Lead:
+Drupal Developer:
+Drupal Lead:
+------------------------------------------------------------------
+
+/*****************************************************************
+------------------------------------------------------------------
+ELEMENT CSS
+------------------------------------------------------------------
+*****************************************************************/
+body {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	padding: 0;
+	margin: 0;
+	font-size: 100%;
+}
+#page {
+	height: 100%;
+	margin: 0 auto;
+	padding: 0;
+	width: 100%;
+}
+
+p, ul, ol, li, h1, h2, h3, h4, h5, h6, ul li, ol li {
+	margin: 0;
+	padding: 0;
+}
+.block ul {
+	padding: 0 0 0 16px;
+	margin: 0;
+}
+.block ol {
+	padding: 0 0 0 22px;
+	margin: 0;
+}
+li {
+	padding-bottom: 10px;
+	list-style-type:none;
+}
+p {
+	padding-bottom: 15px;
+	word-break: keep-all; /* This is used when the words have hyphen between them and we don't want to wrap it. */
+	line-height:19px;
+}
+li {
+	line-height:29px;
+}
+a {
+	text-decoration:underline;
+}
+a:hover {
+	text-decoration: none;
+}
+a:visited:hover, a:visited, a:active , h6 {
+	text-decoration: underline;
+}
+a:focus {
+	outline: none;
+}
+
+::-ms-clear {
+	display: none;
+}
+/*****************************************************************
+------------------------------------------------------------------
+DRUPAL RESET CSS
+------------------------------------------------------------------
+*****************************************************************/
+.region-header .block {
+	clear: both;
+	float: none;
+	width: auto;
+}
+form, .wrapper-content, .stack .box, .region-header .block, .wrapper-content .stack, .wrapper-footer .stack, .form-item, .form-actions, table, .sidebar td, .sidebar th, .stack-copyright, h1, h2, h3, h4, h5, h6 {
+	margin: 0;
+	padding: 0;
+}
+.hd, .not-logged-in #messages, .not-logged-in #main .tabs, #skip-link, #breadcrumb, .not-logged-in body, .wf-loading body {
+	display: none;
+}
+.wrapper-content .block + .block, .block + .block {
+	margin-top: 0;
+}
+.ui-widget-content, .ui-widget-header, .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default, .ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus, .ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active, .ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight, .ui-state-error, .ui-widget-content .ui-state-error, .ui-widget-header .ui-state-error, .ui-icon, .ui-widget-content .ui-icon, .ui-widget-header .ui-icon, .ui-state-default .ui-icon, .ui-state-hover .ui-icon, .ui-state-focus .ui-icon, .ui-state-active .ui-icon, .ui-state-highlight .ui-icon, .ui-state-error .ui-icon, .ui-state-error-text .ui-icon {
+	background-image: none;
+}
+th:first-child, td:first-child, th + th, td + td {
+	padding-left: 10px;
+	padding-right: 13px;
+}
+caption, th, td {
+	font-weight: inherit;
+	text-align: left;
+}
+table br + br {
+	display: block;
+}

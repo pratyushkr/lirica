@@ -1,0 +1,149 @@
+/****************************************
+ ----------------------------------------
+ CSS FOR pDPN VIDEO PAGE STARTS HERE
+ ----------------------------------------
+ ***************************************/
+@import url('../common.less');
+
+.content {
+	.video-title {
+		.FSAlbert;
+		font-size: 34.26px;
+		line-height: normal;
+		color: @dark_blue;
+		margin-bottom: 3.5%;
+		@media @mobile {
+			font-size: 14.26px;
+		}
+	}
+	.video-content {
+		max-width: 1002px;
+		margin: 0 auto;
+		.left-wrap {
+			.fl;
+			width: 51.2%;
+			margin-right: 4%;
+			.field-name-field-video {
+				.border-radius(3px);
+				border: 1px solid #c2c2c2;
+			    padding: 0 2px;
+			}
+			.field-name-body {
+				.FSAlbert;
+				font-size: 21.41px;
+			    line-height: normal;
+	    		margin-top: 2%;
+	    		@media @mobile {
+	    			font-size: 11.41px;
+	    		}
+			}
+		}
+		.right-wrap {
+			.fl;
+			width: 44.6%;
+			.chapters-wrap {
+				.chapters-header {
+					.FSAlbertBold;
+					.border-radius(5px 5px 0 0);
+					.box-shadow(1px 1px 2px #555555);
+					background-color: #f4f4f4;
+				    padding: 2.42% 3.5%;
+	    			max-width: 138px;
+	    			width: 40%;
+					color: @blue;
+					font-size: 21.41px;
+					@media @mobile {
+						font-size: 11.41px;
+					}
+				}
+				.chapters {
+				    .box-shadow(1px 2px 2px #555555);
+				    .border-radius(0 5px 5px 5px);
+				    .gradient (#f4f4f4, #d9d9d9);
+				    padding: 1% 0;
+				    margin-top: -2px;
+				    div:not(.chapter){
+				    	margin: 0 auto;
+				    	width: 10%;
+				    }
+				    .chapter {
+						.FSAlbert;
+						font-size: 17.13px;
+						line-height: normal;
+						cursor: pointer;
+						@media @mobile {
+							font-size: 7px;
+						}
+						> div {
+							&.chapter-num {
+								.fl;
+								.alignl;
+								margin: 1.85% 2.8%;
+							}
+							&.chapter-name {
+								.fl;
+								.alignl;
+								width: 63%;
+								margin: 1.85% 0;
+							}
+							&.chapter-timestamp {
+								.fr;
+								.alignr;
+								margin: 1.85% 2.8%;
+							}
+						}
+						&.chapter-item-selected {
+							.FSAlbertBold;
+							.border-radius(4px);
+							margin: 0 1.8%;
+						    background: @blue;
+						    color: @yellow;
+						    .chapter-num {
+						    	margin-left: 1.2%;
+						    }
+						    .chapter-timestamp {
+						    	margin-right: 1.2%
+						    }
+						}
+					}
+				}
+			}
+			.doctor-desc-wrap{
+		    	padding: 2.4% 2.8%;
+		    	margin-top: 6.4%;
+		    	border: 2px dotted #c1c1c1;
+		    	border-radius: 5px; /*change*/
+				> div {
+					.fl;
+					&:first-of-type {
+						width: 26%;
+					}
+					&.doctor-desc-right {
+						margin-left: 3.2%;
+						width: 70%;
+						line-height: normal;
+						.field-name-field-doctor-name {
+							.FSAlbertBold;
+							font-size: 21.41px;
+							color: @blue;
+							@media @mobile {
+								font-size: 8.41px;
+							}
+						}
+						.field-name-field-doctor-description {
+							.FSAlbert;
+							font-size: 17.13px;
+							@media @mobile {
+								font-size: 7.13px;
+							}
+						}
+					}
+					img {
+						.border-radius(8px);
+					   	border-right: 4px solid @yellow;
+					}
+				}
+			}
+		}
+	}
+}

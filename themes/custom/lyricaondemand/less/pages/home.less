@@ -1,0 +1,56 @@
+/****************************************
+ ----------------------------------------
+ CSS FOR HOME PAGE STARTS HERE
+ ----------------------------------------
+ ***************************************/
+@import url('../common.less');
+
+.content {
+	.view-content {
+	    margin-left: -4%;
+	}
+	td {
+		.vertical-top;
+		.FSAlbert;
+		line-height: normal;
+	    width: 50%;
+	    padding: 0 3%;
+		.views-field-title {
+			font-size: 32.12px;
+			margin-bottom: 15px;
+			min-height: 75px;
+			@media @mobile {
+				font-size: 14.12px;
+			}
+			@media @mobileportrait {
+				min-height: 50px;
+			}
+			@media @mobilelandscape {
+				min-height: 32px;
+			}
+			@media @tablet {
+				min-height: 111px;
+			}
+			a {
+				color: @dark_blue;
+			}
+		}
+		.views-field-body {
+			font-size: 18.04px;
+		    margin-top: 2.2%;
+			@media @mobile {
+				font-size: 7.51px;
+			}
+		}
+	}
+}
+.page-not-found {
+	p {
+		.FSAlbert;
+		&:first-of-type {
+			font-size: 25px;
+			line-height: normal;
+			color: @dark_blue;
+		}
+	}
+}

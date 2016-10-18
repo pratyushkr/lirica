@@ -1,0 +1,6 @@
+;$Id$
+name = pfe_popup
+description = Handles the Popups for the site
+core = 7.x
+files[] = pfe_popup.module
+dependencies[] = ctools

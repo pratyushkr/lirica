@@ -1,0 +1,107 @@
+/****************************************
+ ----------------------------------------
+ FOOTER STYLING STARTS HERE
+ ----------------------------------------
+ ***************************************/
+@import url('../common.less');
+.footer-holder {
+	/*.box-shadow(0px 0px 20px 7px #e5e5e4);*/
+	background: url("@{base-url}/footer-top-shadow.png") repeat-x;
+	background-color: @white;
+	.footer-logo {
+	    .fl;
+    	max-width: 50px;
+        margin: 1.7% 1.5% 0 0;
+        @media @mobile {
+			margin-top: 3.8%;
+			margin-left: 1%;
+		}
+		@media @tablet {
+			margin-left: 1%;
+		}
+	}
+	.footer {
+		.fl;
+	    padding: 2% 0 0 0;
+		width: 80%;
+		@media @mobile {
+			padding: 4.6% 0 0 2%;
+		}
+		.block__title {
+			.displaynone;
+		}
+		ul.menu{
+			.padding0;
+			li {
+				.displayblock;
+			    .fl;
+			    .FSAlbertLight;
+			    margin: 0 2.65% 0 0;
+			    font-size: 14.99px;
+			    line-height: normal;
+			    @media @mobile {
+			    	font-size: 12.37px;
+			    }
+			    a {
+			    	color: @blue;
+			    }
+		    }
+		}
+		.footer-copyright-block {
+			.fn;
+			.FSAlbert;
+			font-size: 12.85px;
+			color: @footer_grey;
+			.footer-copyright {
+				margin: 1.2% 0;
+				p {
+					.padding0;
+				}
+			}
+		}
+	}
+	.footer-contact-wrap {
+	    .pabsolute;
+	    .right0;
+	    top: -52px;
+	    background: url("@{base-url}/contact-link-bg.png") no-repeat;
+	    width: 351px;
+	    max-width: 351px;
+	    height: 60px;
+        border-top-left-radius: 30px;
+        @media @mobile {
+            width: 80%;
+            max-width: 250px;
+            top: -32px;
+            height: 40px;
+            background-size: 100% 100%;
+        }
+	    .footer-contact-holder {
+	        .pabsolute;
+		    .right0;
+		    .bottom0;
+	    	width: 90%;
+	    	height: 82%;
+	    	@media @mobile {
+	    		bottom: 0;
+	    	}
+	    	.contact-icon {
+		    	.displaytablecell;
+		    	.vertical-middle;
+		    	width: 10%;
+		    }
+		    .contact-text {
+		    	.displaytablecell;
+		    	.FSAlbertBold;
+		    	font-size: 17.13px;
+		    	width: 90%;
+		    	padding-left: 4%;
+		    	color: @grey;
+		    	line-height: normal;
+		    	@media @mobile {
+		    		font-size: 12.13px;
+		    	}
+		    }
+	    }
+	}
+}

@@ -1,0 +1,67 @@
+/****************************************
+ ----------------------------------------
+ HEADER STYLING STARTS HERE
+ ----------------------------------------
+ ***************************************/
+@import url('../common.less');
+.header {
+	height: 144px;
+	background: url("@{base-url}/header-bg.jpg") repeat;
+	background-size: contain;
+	@media @mobile{
+		height: 100px;
+	}
+	.head-wrap {
+		.left-wrap {
+			.displaytablecell;
+			.vertical-middle;
+			width: 65%;
+			.main-menu-toggler {
+				.displaytablecell;
+				.alignc;
+				cursor: pointer;
+				width: 13%;
+				span {
+					.displayblock;
+					.FSAlbertBold;
+					.alignc;
+					font-size: 15.37px;
+					line-height: normal;
+					margin-bottom: 8%;
+					text-transform: uppercase;
+					color: @yellow;
+					@media @mobile {
+						font-size: 7.37px;
+					}
+				}
+			}
+			.site-name {
+				.displaytablecell;
+				.vertical-bottom;
+				.FSAlbert;
+				width: 87%;
+				font-size: 47.11px;
+				color: @white;
+				line-height: 43px;
+				padding: 0 2% 0 5.6%;
+				@media @tablet {
+				    font-size: 39.32px;
+				    line-height: 38px;
+				}
+				@media @mobile {
+					font-size: 16.32px;
+				    line-height: 1.5em;
+				}
+			}
+		}
+		.logo-wrap {
+			.displaytablecell;
+			.vertical-middle;
+			.alignr;
+			width: 35%;
+			.header__logo {
+				.fn;
+			}
+		}
+	}
+}

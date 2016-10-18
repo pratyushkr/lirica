@@ -1,0 +1,498 @@
+/****************************************
+ ----------------------------------------
+ CSS FOR LOGIN PAGE STARTS HERE
+ ----------------------------------------
+ ***************************************/
+/****************************************
+ ----------------------------------------
+ LESS VARIABLES
+ ----------------------------------------
+ ***************************************/
+/****MEDIA QUERY****/
+/****Font Styling****/
+/****Font Sizes****/
+/****color codes****/
+/****BASE URL****/
+/****Display Properties****/
+/****Text align properties****/
+/****Float properties****/
+/****Device Visibility****/
+/****Headings****/
+/****paragraph****/
+/****Border radius****/
+/****Box sizing****/
+/* Form Styling */
+/* Brightcove video resizing */
+/* Placeholder Styling */
+/* Firefox 18- */
+/* Firefox 19+ */
+.FSAlbert {
+  font-family: "FS Albert Web Regular", Verdana, sans-serif;
+}
+.FSAlbertBold {
+  font-family: "FS Albert Web Bold", Verdana, sans-serif;
+}
+.FSAlbertLight {
+  font-family: "FS Albert Web Light", Verdana, sans-serif;
+}
+input {
+  outline: none;
+}
+.displayblock {
+  display: block;
+}
+.displaynone {
+  display: none;
+}
+.displayinblk {
+  display: inline-block;
+}
+.displayinline {
+  display: inline;
+}
+.displaytable {
+  display: table;
+}
+.displaytablerow {
+  display: table-row;
+}
+.displaytablecell {
+  display: table-cell;
+}
+.bgnone {
+  background: none;
+}
+.overflowhidden {
+  overflow: hidden;
+}
+.vertical-top {
+  vertical-align: top;
+}
+.vertical-middle {
+  vertical-align: middle;
+}
+.vertical-bottom {
+  vertical-align: bottom;
+}
+.alignr {
+  text-align: right;
+}
+.alignl {
+  text-align: left;
+}
+.alignc {
+  text-align: center;
+}
+.textdnone {
+  text-decoration: none;
+}
+.textdline {
+  text-decoration: underline;
+}
+.font-normal {
+  font-weight: normal;
+}
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
+.fn {
+  float: none;
+}
+.cn {
+  clear: none;
+}
+.clrbth {
+  clear: both;
+}
+.clr {
+  clear: both;
+  overflow: hidden;
+}
+.fullwidth {
+  width: 100%;
+}
+.autowidth {
+  width: auto;
+}
+.margin0 {
+  margin: 0;
+}
+.padding0 {
+  padding: 0;
+}
+.prelative {
+  position: relative;
+}
+.pabsolute {
+  position: absolute;
+}
+.pstatic {
+  position: static;
+}
+.pfixed {
+  position: fixed;
+}
+.left0 {
+  left: 0;
+}
+.top0 {
+  top: 0;
+}
+.right0 {
+  right: 0;
+}
+.bottom0 {
+  bottom: 0;
+}
+.bordernone {
+  border: 0;
+}
+.visible-desk {
+  display: block;
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px), only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  .visible-desk {
+    display: none;
+  }
+}
+@media only screen and (max-width: 767px), only screen and (max-device-width: 767px) {
+  .visible-desk {
+    display: none;
+  }
+}
+.visible-tab {
+  display: none;
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px), only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  .visible-tab {
+    display: block;
+  }
+}
+@media only screen and (max-width: 767px), only screen and (max-device-width: 767px) {
+  .visible-tab {
+    display: none;
+  }
+}
+.visible-desk.visible-tab {
+  display: block;
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px), only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  .visible-desk.visible-tab {
+    display: block;
+  }
+}
+@media only screen and (max-width: 767px), only screen and (max-device-width: 767px) {
+  .visible-desk.visible-tab {
+    display: none;
+  }
+}
+.hidden-mob {
+  display: block;
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px), only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  .hidden-mob {
+    display: block;
+  }
+}
+@media only screen and (max-width: 767px), only screen and (max-device-width: 767px) {
+  .hidden-mob {
+    display: none;
+  }
+}
+.visible-mob {
+  display: none;
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px), only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  .visible-mob {
+    display: none;
+  }
+}
+@media only screen and (max-width: 767px), only screen and (max-device-width: 767px) {
+  .visible-mob {
+    display: block;
+  }
+}
+h1 {
+  font-weight: normal;
+  color: #0093cf;
+  margin: 0 0 20px 0;
+}
+.front h1.page-title {
+  display: none;
+}
+h2 {
+  font-weight: normal;
+  color: blue;
+}
+h3 {
+  font-weight: normal;
+  color: #0093cf;
+}
+h4 {
+  color: #0093cf;
+  font-weight: normal;
+}
+p {
+  padding-top: 5px;
+  padding-bottom: 10px;
+}
+p,
+ul li,
+ol li {
+  color: #555555;
+}
+a,
+a:visited,
+a:active {
+  text-decoration: none;
+  color: #0093cf;
+  cursor: pointer;
+}
+a:active {
+  text-decoration: none;
+}
+sup {
+  top: -8px;
+  font-size: 50%;
+}
+ul li.menu__item {
+  list-style-type: none;
+  list-style-image: none;
+}
+html,
+body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+body {
+  font-size: 18.98px;
+  color: #555555;
+}
+body.no-scrollable {
+  overflow: hidden;
+  position: fixed;
+}
+.skip-link__wrapper {
+  display: none;
+}
+form .form-required {
+  display: none;
+}
+.outer-container {
+  position: relative;
+  height: 0;
+  padding-bottom: 56.25%;
+}
+.outer-container .video-loader img {
+  position: absolute;
+  width: 10%;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%,-50%);
+}
+.BrightcoveExperience {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+::-webkit-input-placeholder {
+  font-family: "FS Albert Web Light", Verdana, sans-serif;
+}
+:-moz-placeholder {
+  font-family: "FS Albert Web Light", Verdana, sans-serif;
+}
+::-moz-placeholder {
+  font-family: "FS Albert Web Light", Verdana, sans-serif;
+}
+:-ms-input-placeholder {
+  font-family: "FS Albert Web Light", Verdana, sans-serif;
+}
+.not-logged-in .header .head-wrap .left-wrap {
+  display: none;
+}
+.not-logged-in .header .head-wrap .logo-wrap {
+  width: 100%;
+}
+.not-logged-in .main .content {
+  margin-left: 4.35%;
+}
+.logged-in .left-wrap {
+  display: block;
+}
+.main .content {
+  padding-top: 40px;
+}
+.main .content .site-name-wrap {
+  margin-top: 6%;
+}
+.main .content .site-name-wrap .site-logo {
+  display: table-cell;
+  vertical-align: middle;
+  width: 15%;
+}
+.main .content .site-name-wrap .site-name {
+  display: table-cell;
+  vertical-align: middle;
+  font-family: "FS Albert Web Bold", Verdana, sans-serif;
+  font-size: 59.96px;
+  color: #0093cf;
+  width: 85%;
+  padding-left: 0;
+  line-height: normal;
+}
+@media only screen and (max-width: 767px), only screen and (max-device-width: 767px) {
+  .main .content .site-name-wrap .site-name {
+    font-size: 27.49px;
+    padding-left: 2%;
+  }
+}
+.main .content .login-form {
+  margin-top: 4%;
+}
+.main .content .login-form > div {
+  margin: 0 auto;
+}
+.main .content .login-form > div .form-item label {
+  float: left;
+  clear: both;
+  font-family: "FS Albert Web Bold", Verdana, sans-serif;
+  font-size: 19.27px;
+  color: #0093cf;
+  width: 18%;
+  max-width: 75px;
+  margin-right: 3%;
+  padding: 1.6% 0;
+}
+@media only screen and (max-width: 767px), only screen and (max-device-width: 767px) {
+  .main .content .login-form > div .form-item label {
+    font-size: 12.27px;
+  }
+}
+.main .content .login-form > div .form-item input {
+  float: left;
+  border: 0;
+  -moz-box-shadow: inset 0 0 4px 0 #6e6e6e, transparent 0 0 0;
+  -webkit-box-shadow: inset 0 0 4px 0 #6e6e6e, transparent 0 0 0;
+  -ms-box-shadow: inset 0 0 4px 0 #6e6e6e, transparent 0 0 0;
+  -o-box-shadow: inset 0 0 4px 0 #6e6e6e, transparent 0 0 0;
+  box-shadow: inset 0 0 4px 0 #6e6e6e, transparent 0 0 0;
+  font-family: "FS Albert Web Regular", Verdana, sans-serif;
+  color: inherit;
+  width: 53%;
+  height: 35px;
+  max-width: 472px;
+  padding: 0 1.5%;
+  margin: 1% 0;
+  background-color: transparent;
+  line-height: 35px;
+  border-radius: 4px;
+}
+.main .content .login-form > div .form-item input:-webkit-autofill {
+  border: 2px solid #e3e3e3;
+  -webkit-box-shadow: 0 0 0 1000px #fff inset;
+}
+.dv-iphone .main .content .login-form > div .form-item input {
+  border: 1px solid #e3e3e3;
+}
+@media only screen and (max-width: 767px), only screen and (max-device-width: 767px) {
+  .main .content .login-form > div .form-item input {
+    font-size: 12.27px;
+    height: 26px;
+    line-height: 26px;
+    width: 51%;
+  }
+}
+.main .content .login-form > div .form-item .error:not(input) {
+  float: left;
+  font-family: "FS Albert Web Light", Verdana, sans-serif;
+  font-size: 17.13px;
+  width: 25%;
+  margin-left: 2%;
+  padding: 1.6% 0;
+  background-color: transparent;
+}
+@media only screen and (max-width: 767px), only screen and (max-device-width: 767px) {
+  .main .content .login-form > div .form-item .error:not(input) {
+    font-size: 9.13px;
+  }
+}
+.main .content .login-form .captcha-wrapper {
+  display: none;
+}
+.main .content .login-form .submit-wrapper .submit-append {
+  float: left;
+  clear: both;
+  width: 18%;
+  max-width: 75px;
+  margin-right: 3%;
+}
+.main .content .login-form .submit-wrapper .form-actions.form-wrapper {
+  float: left;
+  padding-top: 3%;
+  width: 53%;
+  max-width: 472px;
+}
+.main .content .login-form .submit-wrapper .form-actions.form-wrapper .form-submit {
+  font-family: "FS Albert Web Bold", Verdana, sans-serif;
+  float: left;
+  border: 0;
+  border-radius: 5px;
+  width: 46%;
+  margin-right: 8%;
+  height: 40px;
+  background-color: #0093cf;
+  color: #fff;
+  font-size: 19.62px;
+}
+@media only screen and (max-width: 767px), only screen and (max-device-width: 767px) {
+  .main .content .login-form .submit-wrapper .form-actions.form-wrapper .form-submit {
+    font-size: 9.13px;
+    height: 30px;
+  }
+}
+.main .content .login-form .submit-wrapper .form-actions.form-wrapper .create-account-btn {
+  font-family: "FS Albert Web Bold", Verdana, sans-serif;
+  float: left;
+  text-align: center;
+  border: 0;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 46%;
+  height: 40px;
+  background-color: #ffcb05;
+  line-height: 40px;
+  font-size: 20.13px;
+}
+.main .content .login-form .submit-wrapper .form-actions.form-wrapper .create-account-btn a {
+  display: block;
+  color: #00517d;
+}
+@media only screen and (max-width: 767px), only screen and (max-device-width: 767px) {
+  .main .content .login-form .submit-wrapper .form-actions.form-wrapper .create-account-btn {
+    font-size: 9.13px;
+    height: 30px;
+    line-height: 30px;
+  }
+}
+.main .content .login-form .submit-wrapper .form-actions.form-wrapper .forgot-password-btn {
+  font-size: 17.13px;
+  margin-top: 14%;
+}
+@media only screen and (max-width: 767px), only screen and (max-device-width: 767px) {
+  .main .content .login-form .submit-wrapper .form-actions.form-wrapper .forgot-password-btn {
+    font-size: 13.13px;
+    margin-top: 17%;
+  }
+}
+.main .content .login-form .submit-wrapper .form-actions.form-wrapper .forgot-password-btn a {
+  text-decoration: underline;
+  font-family: "FS Albert Web Regular", Verdana, sans-serif;
+  color: #555555;
+}

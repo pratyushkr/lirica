@@ -1,0 +1,364 @@
+/****************************************
+ ----------------------------------------
+ LESS VARIABLES
+ ----------------------------------------
+ ***************************************/
+
+/****MEDIA QUERY****/
+@tablet:  ~"only screen and (min-width: 768px) and (max-width: 1024px), only screen and (min-device-width: 768px) and (max-device-width: 1024px)";
+@tabletportrait:  ~"only screen and (min-width: 768px) and (max-width: 1024px) and (orientation:portrait), only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation:portrait)";
+
+@tabletlandscape: ~"only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) , only screen and (max-device-width: 1024px) and (min-device-width: 768px) and (orientation: landscape)";
+
+
+@tabletdesk: ~"only screen and (min-width: 768px) and (max-width: 1024px)";
+@mobile: ~"only screen and (max-width: 767px), only screen and (max-device-width: 767px)";
+@mobileportrait: ~"only screen and (max-width: 767px) and (orientation:portrait), only screen and (max-device-width: 767px) and (orientation:portrait)";
+@mobilelandscape: ~"only screen and (max-width: 767px) and (orientation:landscape), only screen and (max-device-width: 767px) and (orientation:landscape)";
+
+/****Font Styling****/
+
+/****Font Sizes****/
+
+@font11:11px;
+
+/****color codes****/
+@grey:#555555;
+@footer_grey:#464646;
+@white:#fff;
+@yellow:#ffcb05;
+@blue:#0093cf;
+@dark_blue:#00517d;
+
+
+/****BASE URL****/
+@base-url: "/sites/default/themes/custom/lyricaondemand/images";
+
+/****Display Properties****/
+.FSAlbert {
+	font-family:"FS Albert Web Regular", Verdana, sans-serif;
+}
+.FSAlbertBold {
+    font-family:"FS Albert Web Bold", Verdana, sans-serif;
+}
+.FSAlbertLight {
+    font-family:"FS Albert Web Light", Verdana, sans-serif;
+}
+
+input {
+	outline:none;
+}
+.displayblock{
+	display:block;
+}
+.displaynone{
+	display:none;
+}
+.displayinblk{
+	display:inline-block;
+}
+.displayinline{
+	display:inline;
+}
+.displaytable {
+    display:table;
+}
+.displaytablerow {
+	display:table-row;
+}
+.displaytablecell {
+    display:table-cell;
+}
+
+.bgnone{
+	background:none;
+}
+.overflowhidden{
+	overflow:hidden;
+}
+
+/****Text align properties****/
+.vertical-top {
+    vertical-align: top;
+}
+.vertical-middle {
+    vertical-align: middle;
+}
+.vertical-bottom {
+    vertical-align: bottom;
+}
+.alignr{
+	text-align:right;
+}
+.alignl{
+	text-align:left;
+}
+.alignc{
+	text-align:center;
+}
+.textdnone{
+	text-decoration:none;
+}
+.textdline{
+	text-decoration:underline;
+}
+.font-normal{
+	font-weight:normal;
+}
+
+/****Float properties****/
+.fl{
+	float:left;
+}
+.fr{
+	float:right;
+}
+.fn{
+	float:none;
+}
+.cn{
+	clear:none;
+}
+.clrbth {
+	clear:both;
+}
+.clr{
+	clear:both;
+	overflow:hidden;
+}
+.fullwidth{
+	width:100%;
+}
+.autowidth{
+	width:auto;
+}
+.margin0{
+	margin:0;
+}
+.padding0{
+	padding:0;
+}
+.prelative{
+	position:relative;
+}
+.pabsolute{
+	position:absolute;
+}
+.pstatic{
+	position:static;
+}
+.pfixed{
+	position:fixed;
+}
+.left0{
+	left:0;
+}
+.top0{
+	top:0;
+}
+.right0{
+	right:0;
+}
+.bottom0{
+	bottom:0;
+}
+.bordernone{
+	border:0;
+}
+/****Device Visibility****/
+.visible-desk{
+	.displayblock;
+	@media @tablet{
+		.displaynone;
+	}
+	@media @mobile{
+		.displaynone;
+	}
+}
+.visible-tab{
+	.displaynone;
+	@media @tablet{
+		.displayblock;
+	}
+	@media @mobile{
+		.displaynone;
+	}
+}
+.visible-desk{
+	&.visible-tab{
+		.displayblock;
+		@media @tablet{
+			.displayblock;
+		}
+		@media @mobile{
+			.displaynone;
+		}
+	}
+}
+.hidden-mob{
+	.displayblock;
+	@media @tablet{
+		.displayblock;
+	}
+	@media @mobile{
+		.displaynone;
+	}
+}
+.visible-mob{
+	.displaynone;
+	@media @tablet{
+		.displaynone;
+	}
+	@media @mobile{
+		.displayblock;
+	}
+}
+
+
+/****Headings****/
+h1{
+	.font-normal;
+	color:@blue;
+	margin:0 0 20px 0;
+	&.page-title{
+		.front &{
+			.displaynone;
+		}
+	}
+}
+h2{
+	.font-normal;
+	color:blue;
+}
+h3{
+	.font-normal;
+	color:@blue;
+}
+h4{
+	color:@blue;
+	.font-normal;
+}
+
+/****paragraph****/
+p{
+    padding-top: 5px;
+	padding-bottom:10px;
+}
+p, ul li, ol li{
+	color:@grey;
+}
+a, a:visited, a:active{
+	.textdnone;
+	color: @blue;
+	cursor: pointer;
+}
+a:active{
+	.textdnone;
+}
+sup{
+	top: -8px;
+	font-size:50%;
+}
+ul li.menu__item {
+	list-style-type: none;
+	list-style-image: none;
+}
+/****Border radius****/
+.border-radius(@borderradius){
+	-webkit-border-radius:@borderradius;
+	-moz-border-radius:@borderradius;
+	-o-border-radius:@borderradius;
+	-ms-border-radius:@borderradius;
+	border-radius:@borderradius;
+}
+
+/****Box sizing****/
+.border-sizing(@borderbox){
+	-webkit-border-radius:@borderbox;
+	-moz-border-radius:@borderbox;
+	-o-border-radius:@borderbox;
+	-ms-border-radius:@borderbox;
+	border-radius:@borderbox;
+}
+
+.box-shadow (@shadow1, @shadow2: transparent 0 0 0 ) {
+    -moz-box-shadow: @shadow1, @shadow2;
+    -webkit-box-shadow: @shadow1, @shadow2;
+	  -ms-box-shadow: @shadow1, @shadow2;
+	  -o-box-shadow: @shadow1, @shadow2;
+    box-shadow: @shadow1, @shadow2;
+}
+.gradient (@startColor, @endColor) {
+	background-color: @startColor;
+	background: -webkit-gradient(linear, left top, left bottom, from(@startColor), to(@endColor));
+	background: -webkit-linear-gradient(top, @startColor, @endColor);
+	background: -moz-linear-gradient(top, @startColor, @endColor);
+	background: -ms-linear-gradient(top, @startColor, @endColor);
+	background: -o-linear-gradient(top, @startColor, @endColor);
+}
+
+.transition(@transition){
+	-webkit-transition: @transition;
+    -moz-transition: @transition;
+    -ms-transition: @transition;
+    -o-transition: @transition;
+    transition: @transition;
+}
+
+html, body {
+    .fullwidth;
+    .margin0;
+    .padding0;
+    height: 100%;
+}
+body {
+	font-size: 18.98px;
+	color: @grey;
+	&.no-scrollable {
+		overflow:hidden;
+		position: fixed;
+	}
+}
+.skip-link__wrapper {
+	.displaynone;
+}
+
+/* Form Styling */
+form .form-required {
+	.displaynone;
+}
+
+/* Brightcove video resizing */
+.outer-container {
+  .prelative;
+  height: 0;
+  padding-bottom: 56.25%;
+  .video-loader img {
+    .pabsolute;
+    width: 10%;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%,-50%);
+  }
+}
+.BrightcoveExperience {
+  .pabsolute;
+  .top0;
+  .left0;
+  .fullwidth;
+  height: 100%;
+}
+
+/* Placeholder Styling */
+::-webkit-input-placeholder {
+   .FSAlbertLight;
+}
+:-moz-placeholder { /* Firefox 18- */
+   .FSAlbertLight;
+}
+::-moz-placeholder {  /* Firefox 19+ */
+   .FSAlbertLight;
+}
+:-ms-input-placeholder {  
+   .FSAlbertLight;
+}

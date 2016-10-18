@@ -1,0 +1,181 @@
+/****************************************
+ ----------------------------------------
+ CSS FOR LOGIN PAGE STARTS HERE
+ ----------------------------------------
+ ***************************************/
+@import url('../common.less');
+
+.not-logged-in {
+	.header .head-wrap {
+		.left-wrap {
+			.displaynone;
+		}
+		.logo-wrap {
+			.fullwidth;
+		}
+	}
+	.main .content {
+		margin-left: 4.35%;
+	}
+}
+.logged-in {
+	.left-wrap {
+		.displayblock;;
+	}
+}
+.main .content {
+	padding-top: 40px;
+	.site-name-wrap {
+		margin-top: 6%;
+		.site-logo {
+			.displaytablecell;
+			.vertical-middle;
+			width: 15%;
+		}
+		.site-name {
+			.displaytablecell;
+			.vertical-middle;
+			.FSAlbertBold;
+			font-size: 59.96px;
+			color: @blue;
+			width: 85%;
+			padding-left: 0;
+			line-height: normal;
+			@media @mobile {
+				font-size: 27.49px;
+				padding-left: 2%;
+			}
+		}
+	}
+	.login-form {
+		margin-top: 4%;
+		> div {
+			margin: 0 auto;
+			.form-item {
+				label {
+					.fl;
+					.clrbth;
+					.FSAlbertBold;
+					font-size: 19.27px;
+					color: @blue;
+					width: 18%;
+					max-width: 75px;
+					margin-right: 3%;
+					padding: 1.6% 0;
+					@media @mobile {
+						font-size: 12.27px;
+					}
+				}
+				input {
+					.fl;
+					.bordernone;
+					.box-shadow(inset 0 0 4px 0 #6e6e6e);
+					.FSAlbert;
+    				color: inherit;
+					width: 53%;
+					height: 35px;
+					max-width: 472px;
+				    padding: 0 1.5%;
+			        margin: 1% 0;
+				    background-color: transparent;
+				    line-height: 35px;
+				    border-radius: 4px;
+					&:-webkit-autofill {
+						border: 2px solid #e3e3e3;
+						-webkit-box-shadow: 0 0 0 1000px #fff inset;
+					}					
+					.dv-iphone &{
+						border: 1px solid #e3e3e3;
+					}
+				    @media @mobile {
+						font-size: 12.27px;
+						height: 26px;
+						line-height: 26px;
+						width: 51%;
+					}
+				}
+				.error:not(input) {
+					.fl;
+					.FSAlbertLight;
+					font-size: 17.13px;
+					width: 25%;
+					margin-left: 2%;
+					padding: 1.6% 0;
+					background-color: transparent;
+					@media @mobile {
+						font-size: 9.13px;
+					}
+				}
+			}
+		}
+		.captcha-wrapper {
+			.displaynone;
+		}
+		.submit-wrapper {
+			.submit-append {
+				.fl;
+				.clrbth;
+			    width: 18%;
+			    max-width: 75px;
+			    margin-right: 3%;
+			}
+			.form-actions.form-wrapper {
+				.fl;
+				padding-top: 3%;
+				width: 53%;
+				max-width: 472px;
+				.form-submit {
+					.FSAlbertBold;
+					.fl;
+					.bordernone;
+				    border-radius: 5px;
+					width: 46%;
+					margin-right: 8%;
+					height: 40px;
+					background-color: @blue;
+					color: @white;
+					font-size: 19.62px;
+					@media @mobile {
+						font-size: 9.13px;
+						height: 30px;
+					}
+				}
+				.create-account-btn {
+					.FSAlbertBold;
+					.fl;
+					.alignc;
+					.bordernone;
+					cursor: pointer;
+				    border-radius: 5px;
+					width: 46%;
+					height: 40px;
+					background-color: @yellow;
+    				line-height: 40px;
+    				font-size: 20.13px;
+    				a {
+    					.displayblock;
+    					color: @dark_blue;
+    				}
+    				@media @mobile {
+						font-size: 9.13px;
+						height: 30px;
+						line-height: 30px;
+					}
+				}
+				.forgot-password-btn {
+					font-size: 17.13px;
+					margin-top: 14%;
+					@media @mobile {
+						font-size: 13.13px;
+						margin-top: 17%;
+					}
+					a {
+						.textdline;
+						.FSAlbert;
+						color: @grey;
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="//192.168.16.85:3333/sitemap.xsl?pfizer_sst=1"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url><loc>http://192.168.16.85:3333/</loc><changefreq>daily</changefreq><priority>1.0</priority></url>
+<url><loc>http://192.168.16.85:3333/node/1?drupal_auth=1</loc><lastmod>2016-09-14T12:18Z</lastmod><changefreq>hourly</changefreq></url>
+</urlset>

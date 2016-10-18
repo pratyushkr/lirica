@@ -1,0 +1,386 @@
+/****************************************
+ ----------------------------------------
+ MAIN MENU NAVIGATION STYLING STARTS HERE
+ ----------------------------------------
+ ***************************************/
+/****************************************
+ ----------------------------------------
+ LESS VARIABLES
+ ----------------------------------------
+ ***************************************/
+/****MEDIA QUERY****/
+/****Font Styling****/
+/****Font Sizes****/
+/****color codes****/
+/****BASE URL****/
+/****Display Properties****/
+/****Text align properties****/
+/****Float properties****/
+/****Device Visibility****/
+/****Headings****/
+/****paragraph****/
+/****Border radius****/
+/****Box sizing****/
+/* Form Styling */
+/* Brightcove video resizing */
+/* Placeholder Styling */
+/* Firefox 18- */
+/* Firefox 19+ */
+.FSAlbert {
+  font-family: "FS Albert Web Regular", Verdana, sans-serif;
+}
+.FSAlbertBold {
+  font-family: "FS Albert Web Bold", Verdana, sans-serif;
+}
+.FSAlbertLight {
+  font-family: "FS Albert Web Light", Verdana, sans-serif;
+}
+input {
+  outline: none;
+}
+.displayblock {
+  display: block;
+}
+.displaynone {
+  display: none;
+}
+.displayinblk {
+  display: inline-block;
+}
+.displayinline {
+  display: inline;
+}
+.displaytable {
+  display: table;
+}
+.displaytablerow {
+  display: table-row;
+}
+.displaytablecell {
+  display: table-cell;
+}
+.bgnone {
+  background: none;
+}
+.overflowhidden {
+  overflow: hidden;
+}
+.vertical-top {
+  vertical-align: top;
+}
+.vertical-middle {
+  vertical-align: middle;
+}
+.vertical-bottom {
+  vertical-align: bottom;
+}
+.alignr {
+  text-align: right;
+}
+.alignl {
+  text-align: left;
+}
+.alignc {
+  text-align: center;
+}
+.textdnone {
+  text-decoration: none;
+}
+.textdline {
+  text-decoration: underline;
+}
+.font-normal {
+  font-weight: normal;
+}
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
+.fn {
+  float: none;
+}
+.cn {
+  clear: none;
+}
+.clrbth {
+  clear: both;
+}
+.clr {
+  clear: both;
+  overflow: hidden;
+}
+.fullwidth {
+  width: 100%;
+}
+.autowidth {
+  width: auto;
+}
+.margin0 {
+  margin: 0;
+}
+.padding0 {
+  padding: 0;
+}
+.prelative {
+  position: relative;
+}
+.pabsolute {
+  position: absolute;
+}
+.pstatic {
+  position: static;
+}
+.pfixed {
+  position: fixed;
+}
+.left0 {
+  left: 0;
+}
+.top0 {
+  top: 0;
+}
+.right0 {
+  right: 0;
+}
+.bottom0 {
+  bottom: 0;
+}
+.bordernone {
+  border: 0;
+}
+.visible-desk {
+  display: block;
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px), only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  .visible-desk {
+    display: none;
+  }
+}
+@media only screen and (max-width: 767px), only screen and (max-device-width: 767px) {
+  .visible-desk {
+    display: none;
+  }
+}
+.visible-tab {
+  display: none;
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px), only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  .visible-tab {
+    display: block;
+  }
+}
+@media only screen and (max-width: 767px), only screen and (max-device-width: 767px) {
+  .visible-tab {
+    display: none;
+  }
+}
+.visible-desk.visible-tab {
+  display: block;
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px), only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  .visible-desk.visible-tab {
+    display: block;
+  }
+}
+@media only screen and (max-width: 767px), only screen and (max-device-width: 767px) {
+  .visible-desk.visible-tab {
+    display: none;
+  }
+}
+.hidden-mob {
+  display: block;
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px), only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  .hidden-mob {
+    display: block;
+  }
+}
+@media only screen and (max-width: 767px), only screen and (max-device-width: 767px) {
+  .hidden-mob {
+    display: none;
+  }
+}
+.visible-mob {
+  display: none;
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px), only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  .visible-mob {
+    display: none;
+  }
+}
+@media only screen and (max-width: 767px), only screen and (max-device-width: 767px) {
+  .visible-mob {
+    display: block;
+  }
+}
+h1 {
+  font-weight: normal;
+  color: #0093cf;
+  margin: 0 0 20px 0;
+}
+.front h1.page-title {
+  display: none;
+}
+h2 {
+  font-weight: normal;
+  color: blue;
+}
+h3 {
+  font-weight: normal;
+  color: #0093cf;
+}
+h4 {
+  color: #0093cf;
+  font-weight: normal;
+}
+p {
+  padding-top: 5px;
+  padding-bottom: 10px;
+}
+p,
+ul li,
+ol li {
+  color: #555555;
+}
+a,
+a:visited,
+a:active {
+  text-decoration: none;
+  color: #0093cf;
+  cursor: pointer;
+}
+a:active {
+  text-decoration: none;
+}
+sup {
+  top: -8px;
+  font-size: 50%;
+}
+ul li.menu__item {
+  list-style-type: none;
+  list-style-image: none;
+}
+html,
+body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+body {
+  font-size: 18.98px;
+  color: #555555;
+}
+body.no-scrollable {
+  overflow: hidden;
+  position: fixed;
+}
+.skip-link__wrapper {
+  display: none;
+}
+form .form-required {
+  display: none;
+}
+.outer-container {
+  position: relative;
+  height: 0;
+  padding-bottom: 56.25%;
+}
+.outer-container .video-loader img {
+  position: absolute;
+  width: 10%;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%,-50%);
+}
+.BrightcoveExperience {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+::-webkit-input-placeholder {
+  font-family: "FS Albert Web Light", Verdana, sans-serif;
+}
+:-moz-placeholder {
+  font-family: "FS Albert Web Light", Verdana, sans-serif;
+}
+::-moz-placeholder {
+  font-family: "FS Albert Web Light", Verdana, sans-serif;
+}
+:-ms-input-placeholder {
+  font-family: "FS Albert Web Light", Verdana, sans-serif;
+}
+.navigation-wrap {
+  display: none;
+  background-color: rgba(4,81,123,0.9);
+}
+.navigation-wrap .region-navigation-bar {
+  height: 100%;
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px), only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  .navigation-wrap .region-navigation-bar {
+    overflow: auto;
+  }
+}
+@media only screen and (max-width: 767px), only screen and (max-device-width: 767px) {
+  .navigation-wrap .region-navigation-bar {
+    overflow: auto;
+  }
+}
+.navigation-wrap h2.block__title {
+  display: none;
+}
+.navigation-wrap ul {
+  font-size: 21.96px;
+  padding-left: 0;
+}
+.navigation-wrap ul li {
+  font-family: "FS Albert Web Light", Verdana, sans-serif;
+  font-size: 21.96px;
+  line-height: normal;
+  margin: 11.7% 11.7% 0 11.7%;
+  padding-bottom: 11%;
+  border-bottom: 1px solid #fff;
+}
+.navigation-wrap ul li:last-of-type {
+  border: 0;
+}
+.navigation-wrap ul li.close-btn {
+  border: 0;
+  padding: 0;
+  background-image: url("/sites/default/themes/custom/lyricaondemand/images/menu-close-btn.png");
+  width: 30px;
+  height: 30px;
+  margin-bottom: 25%;
+  cursor: pointer;
+  background-size: contain;
+}
+.navigation-wrap ul li.close-btn a {
+  font-size: 0;
+}
+@media only screen and (max-width: 767px), only screen and (max-device-width: 767px) {
+  .navigation-wrap ul li.close-btn {
+    width: 20px;
+    height: 20px;
+  }
+}
+.navigation-wrap ul li a {
+  color: #fff;
+}
+.navigation-wrap ul li a.active {
+  font-family: "FS Albert Web Bold", Verdana, sans-serif;
+  color: #ffcb05;
+}
+@media only screen and (max-width: 767px), only screen and (max-device-width: 767px) {
+  .navigation-wrap ul li {
+    font-size: 14.96px;
+  }
+}
+.navigation-wrap.expand {
+  opacity: 1;
+  z-index: 1;
+}

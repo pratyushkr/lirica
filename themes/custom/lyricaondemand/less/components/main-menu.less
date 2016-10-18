@@ -1,0 +1,69 @@
+/****************************************
+ ----------------------------------------
+ MAIN MENU NAVIGATION STYLING STARTS HERE
+ ----------------------------------------
+ ***************************************/
+ @import url('../common.less');
+
+.navigation-wrap {
+	.displaynone;
+	background-color: rgba(4,81,123,0.9);
+	.region-navigation-bar {
+		height: 100%;
+		@media @tablet {
+			overflow: auto;
+		}
+		@media @mobile {
+			overflow: auto;
+		}
+	}
+	h2.block__title {
+		.displaynone;
+	}
+	ul {
+		font-size: 21.96px;
+		padding-left: 0;
+		li {
+			.FSAlbertLight;
+			font-size: 21.96px;
+			line-height: normal;
+			margin: 11.7% 11.7% 0 11.7%;
+			padding-bottom: 11%;
+			border-bottom: 1px solid @white;
+			&:last-of-type {
+				.bordernone;
+			}
+			&.close-btn {
+				.bordernone;
+	    		.padding0;
+				background-image: url("@{base-url}/menu-close-btn.png");
+				width: 30px;
+				height: 30px;
+				margin-bottom: 25%;
+				cursor: pointer;
+				background-size: contain;
+				a {
+					font-size: 0;
+				}
+				@media @mobile {
+					width: 20px;
+					height: 20px;
+				}
+			}
+			a {
+				color: @white;
+				&.active {
+					.FSAlbertBold;
+					color: @yellow;
+				}
+			}
+			@media @mobile {
+				font-size: 14.96px;
+			}
+		}
+	}
+	&.expand {
+		opacity: 1;
+		z-index: 1;
+	}
+}

@@ -1,0 +1,5 @@
+;$Id$
+name = pfe_lyrica_on_demand
+description = Site changes and customization for Lyrica on Demand
+core = 7.x
+files[] = pfe_lyrica_on_demand.module

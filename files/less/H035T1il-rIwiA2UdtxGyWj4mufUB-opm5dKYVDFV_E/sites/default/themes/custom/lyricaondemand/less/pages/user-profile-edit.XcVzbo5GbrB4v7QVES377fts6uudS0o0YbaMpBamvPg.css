@@ -1,0 +1,399 @@
+/****************************************
+ ----------------------------------------
+ CSS FOR USER PROFILE EDIT PAGE STARTS HERE
+ ----------------------------------------
+ ***************************************/
+/****************************************
+ ----------------------------------------
+ LESS VARIABLES
+ ----------------------------------------
+ ***************************************/
+/****MEDIA QUERY****/
+/****Font Styling****/
+/****Font Sizes****/
+/****color codes****/
+/****BASE URL****/
+/****Display Properties****/
+/****Text align properties****/
+/****Float properties****/
+/****Device Visibility****/
+/****Headings****/
+/****paragraph****/
+/****Border radius****/
+/****Box sizing****/
+/* Form Styling */
+/* Brightcove video resizing */
+/* Placeholder Styling */
+/* Firefox 18- */
+/* Firefox 19+ */
+.FSAlbert {
+  font-family: "FS Albert Web Regular", Verdana, sans-serif;
+}
+.FSAlbertBold {
+  font-family: "FS Albert Web Bold", Verdana, sans-serif;
+}
+.FSAlbertLight {
+  font-family: "FS Albert Web Light", Verdana, sans-serif;
+}
+input {
+  outline: none;
+}
+.displayblock {
+  display: block;
+}
+.displaynone {
+  display: none;
+}
+.displayinblk {
+  display: inline-block;
+}
+.displayinline {
+  display: inline;
+}
+.displaytable {
+  display: table;
+}
+.displaytablerow {
+  display: table-row;
+}
+.displaytablecell {
+  display: table-cell;
+}
+.bgnone {
+  background: none;
+}
+.overflowhidden {
+  overflow: hidden;
+}
+.vertical-top {
+  vertical-align: top;
+}
+.vertical-middle {
+  vertical-align: middle;
+}
+.vertical-bottom {
+  vertical-align: bottom;
+}
+.alignr {
+  text-align: right;
+}
+.alignl {
+  text-align: left;
+}
+.alignc {
+  text-align: center;
+}
+.textdnone {
+  text-decoration: none;
+}
+.textdline {
+  text-decoration: underline;
+}
+.font-normal {
+  font-weight: normal;
+}
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
+.fn {
+  float: none;
+}
+.cn {
+  clear: none;
+}
+.clrbth {
+  clear: both;
+}
+.clr {
+  clear: both;
+  overflow: hidden;
+}
+.fullwidth {
+  width: 100%;
+}
+.autowidth {
+  width: auto;
+}
+.margin0 {
+  margin: 0;
+}
+.padding0 {
+  padding: 0;
+}
+.prelative {
+  position: relative;
+}
+.pabsolute {
+  position: absolute;
+}
+.pstatic {
+  position: static;
+}
+.pfixed {
+  position: fixed;
+}
+.left0 {
+  left: 0;
+}
+.top0 {
+  top: 0;
+}
+.right0 {
+  right: 0;
+}
+.bottom0 {
+  bottom: 0;
+}
+.bordernone {
+  border: 0;
+}
+.visible-desk {
+  display: block;
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px), only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  .visible-desk {
+    display: none;
+  }
+}
+@media only screen and (max-width: 767px), only screen and (max-device-width: 767px) {
+  .visible-desk {
+    display: none;
+  }
+}
+.visible-tab {
+  display: none;
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px), only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  .visible-tab {
+    display: block;
+  }
+}
+@media only screen and (max-width: 767px), only screen and (max-device-width: 767px) {
+  .visible-tab {
+    display: none;
+  }
+}
+.visible-desk.visible-tab {
+  display: block;
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px), only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  .visible-desk.visible-tab {
+    display: block;
+  }
+}
+@media only screen and (max-width: 767px), only screen and (max-device-width: 767px) {
+  .visible-desk.visible-tab {
+    display: none;
+  }
+}
+.hidden-mob {
+  display: block;
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px), only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  .hidden-mob {
+    display: block;
+  }
+}
+@media only screen and (max-width: 767px), only screen and (max-device-width: 767px) {
+  .hidden-mob {
+    display: none;
+  }
+}
+.visible-mob {
+  display: none;
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px), only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  .visible-mob {
+    display: none;
+  }
+}
+@media only screen and (max-width: 767px), only screen and (max-device-width: 767px) {
+  .visible-mob {
+    display: block;
+  }
+}
+h1 {
+  font-weight: normal;
+  color: #0093cf;
+  margin: 0 0 20px 0;
+}
+.front h1.page-title {
+  display: none;
+}
+h2 {
+  font-weight: normal;
+  color: blue;
+}
+h3 {
+  font-weight: normal;
+  color: #0093cf;
+}
+h4 {
+  color: #0093cf;
+  font-weight: normal;
+}
+p {
+  padding-top: 5px;
+  padding-bottom: 10px;
+}
+p,
+ul li,
+ol li {
+  color: #555555;
+}
+a,
+a:visited,
+a:active {
+  text-decoration: none;
+  color: #0093cf;
+  cursor: pointer;
+}
+a:active {
+  text-decoration: none;
+}
+sup {
+  top: -8px;
+  font-size: 50%;
+}
+ul li.menu__item {
+  list-style-type: none;
+  list-style-image: none;
+}
+html,
+body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+body {
+  font-size: 18.98px;
+  color: #555555;
+}
+body.no-scrollable {
+  overflow: hidden;
+  position: fixed;
+}
+.skip-link__wrapper {
+  display: none;
+}
+form .form-required {
+  display: none;
+}
+.outer-container {
+  position: relative;
+  height: 0;
+  padding-bottom: 56.25%;
+}
+.outer-container .video-loader img {
+  position: absolute;
+  width: 10%;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%,-50%);
+}
+.BrightcoveExperience {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+::-webkit-input-placeholder {
+  font-family: "FS Albert Web Light", Verdana, sans-serif;
+}
+:-moz-placeholder {
+  font-family: "FS Albert Web Light", Verdana, sans-serif;
+}
+::-moz-placeholder {
+  font-family: "FS Albert Web Light", Verdana, sans-serif;
+}
+:-ms-input-placeholder {
+  font-family: "FS Albert Web Light", Verdana, sans-serif;
+}
+.account-info h1 {
+  font-family: "FS Albert Web Regular", Verdana, sans-serif;
+  color: #00517d;
+  font-size: 34.26px;
+}
+@media only screen and (max-width: 767px), only screen and (max-device-width: 767px) {
+  .account-info h1 {
+    font-size: 23.14px;
+  }
+}
+.account-info #user-profile-form > div {
+  font-family: "FS Albert Web Regular", Verdana, sans-serif;
+  width: 100%;
+  font-size: 18.5px;
+}
+.account-info #user-profile-form > div .form-wrapper .form-item label,
+.account-info #user-profile-form > div .form-type-password-confirm .form-item label {
+  float: left;
+  clear: both;
+  color: #0093cf;
+  width: 25%;
+  max-width: 180px;
+  font-weight: normal;
+  margin: 1.6% 0;
+  line-height: normal;
+}
+.account-info #user-profile-form > div .form-wrapper .form-item input,
+.account-info #user-profile-form > div .form-type-password-confirm .form-item input {
+  float: left;
+  background: none;
+  border: 1px solid #cdcdcd;
+  border-radius: 3px;
+  width: 25%;
+  max-width: 262px;
+  height: 35px;
+  padding: 0 1.3%;
+  margin: 1% 0;
+  color: #959595;
+}
+@media only screen and (max-width: 767px), only screen and (max-device-width: 767px) {
+  .account-info #user-profile-form > div .form-wrapper .form-item input,
+  .account-info #user-profile-form > div .form-type-password-confirm .form-item input {
+    width: 42%;
+    height: 30px;
+  }
+}
+.account-info #user-profile-form > div .form-wrapper .form-item .error:not(input),
+.account-info #user-profile-form > div .form-type-password-confirm .form-item .error:not(input) {
+  float: left;
+  background: none;
+  width: 50%;
+  line-height: normal;
+  padding: 1.6% 0 1.6% 2%;
+}
+.account-info #user-profile-form > div .curr-pwd-note {
+  clear: both;
+  line-height: normal;
+  margin-bottom: 3%;
+}
+.account-info #user-profile-form > div .form-actions.form-wrapper {
+  clear: both;
+  padding-top: 2%;
+}
+.account-info #user-profile-form > div .form-actions.form-wrapper #edit-submit {
+  border: 0;
+  color: #fff;
+  text-transform: uppercase;
+  width: 96%;
+  max-width: 102px;
+  height: 30px;
+  background-color: #0093cf;
+  border-radius: 4px;
+}
+@media only screen and (max-width: 767px), only screen and (max-device-width: 767px) {
+  .account-info #user-profile-form > div .form-actions.form-wrapper {
+    font-size: 14.5px;
+  }
+}
+@media only screen and (max-width: 767px), only screen and (max-device-width: 767px) {
+  .account-info #user-profile-form > div {
+    font-size: 10.5px;
+  }
+}

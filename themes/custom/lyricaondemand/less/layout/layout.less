@@ -1,0 +1,62 @@
+/****************************************
+ ----------------------------------------
+ CSS FOR LAYOUT STARTS HERE
+ ----------------------------------------
+ ***************************************/
+@import url('../common.less');
+
+.page-wrapper {
+	margin: 0 auto;
+    .fullwidth;
+    .header {
+    	.pfixed;
+    	.fullwidth;
+	    .top0;
+	    z-index: 1;
+	    .head-wrap {
+		    .fullwidth;
+		    .displaytable;
+		    height: 100%;
+		    max-width: 1170px;
+		    margin: 0 auto;
+		    padding: 0 20px;
+		}
+	}
+	.navigation-wrap {
+		.pfixed;
+		.left0;
+		.top0;
+		max-width: 272px;
+		height: 100%;
+		z-index: -1;
+		opacity: 0;
+		@media @mobile {
+			max-width: 142px;
+			width: 40%;
+		}
+	}
+	.main {
+		.fullwidth;
+		max-width: 1170px;
+	    margin: 0 auto;
+	    padding-bottom: 180px;
+	    padding-top: 144px;
+	    @media @mobile {
+	    	padding-top: 100px;
+	    	padding-bottom: 200px;
+	    }
+	    .content {
+	        margin: 0 2.7% 0 9.8%;
+    		padding: 3.4% 0 0 0;
+	    }
+	}
+	.footer-holder {
+    	.fullwidth;
+		.pfixed;
+	    .bottom0;
+	    .footer-wrap {
+	    	max-width: 1170px;
+		    margin: 0 auto;
+	    }
+	}
+}

@@ -1,0 +1,406 @@
+<?php
+/**
+ * @file
+ * This module implements custom components modifications for Lyrica on Demand Site functionality
+ */
+ 
+/**
+ * Implements hook_menu()
+ */
+function pfe_lyrica_on_demand_menu() {
+	$items = array();
+	// Module settings.
+	$items['admin/config/lyrica_on_demand'] = array(
+		'title' => 'Lyrica on Demand',
+		'description' => 'Lyrica on Demand Administration tools.',
+		'page callback' => 'system_admin_menu_block_page',
+		'access arguments' => array('access administration pages'),
+		'file' => 'system.admin.inc',
+		'file path' => drupal_get_path('module', 'system'),
+	);
+	$items['admin/config/lyrica_on_demand/webform-settings'] = array(
+		'title' => 'Webform Settings',
+		'description' => 'Adjust Webform Settings.',
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array('pfe_lyrica_on_demand_admin_settings'),
+		'access arguments' => array('access administration pages'),
+		'file' => 'includes/pfe_lyrica_on_demand_admin.inc',
+	);
+	return $items;
+}
+ 
+/**
+ * Initializes internal and external js and css
+ */
+function pfe_lyrica_on_demand_init() {
+  drupal_add_js('https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js', 'external');
+  drupal_add_js('https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.3/handlebars.min.js', 'external');
+  drupal_add_js('https://sadmin.brightcove.com/js/BrightcoveExperiences.js', 'external');
+  drupal_add_js('https://docs.brightcove.com/en/scripts/https-fix.js', 'external');
+}
+ 
+/**
+ * Implements hook_element_info_alter().
+ */
+function lyricaondemand_element_info_alter(&$types) {
+  if (isset($types['password_confirm']['#process']) && (($position = array_search('user_form_process_password_confirm', $types['password_confirm']['#process'])) !== FALSE)) {
+   unset($types['password_confirm']['#process'][$position]);
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function pfe_lyrica_on_demand_form_user_profile_form_alter(&$form, &$form_state, $form_id) {
+	unset($form['account']['name']);
+	unset($form['account']['mail']['#description']);
+	unset($form['account']['pass']['#description']);
+	unset($form['actions']['cancel']);
+	$form['account']['pass']['#process'] = array('form_process_password_confirm', 'lyrica_profile_password_confirm');
+  $form['pass'] = $form['account']['pass'];
+	$form['pass']['#weight'] = 6;
+	unset($form['account']['pass']);
+	$form['#validate'][] = 'pfe_lyrica_on_demand_form_user_profile_form_validate';
+	$form['#submit'][] = 'pfe_lyrica_on_demand_form_user_profile_submit';
+	$form['#prefix'] = '<div id="account-info-wrapper" class="account-info"><h1>Account information</h1>';
+	$form['#suffix'] = '</div>';
+	$form['field_zip_code']['und']['0']['value']['#attributes']['placeholder'] = t( 'zip code' );
+	$form['field_name']['und']['0']['value']['#attributes']['placeholder'] = t( 'name' );
+	$form['field_job_title']['und']['0']['value']['#attributes']['placeholder'] = t( 'job title' );
+	$form['field_organization']['und']['0']['value']['#attributes']['placeholder'] = t( 'organization' );
+	$form['account']['current_pass']['#attributes']['placeholder'] = t( 'current password' );
+	$form['account']['mail']['#attributes']['placeholder'] = t( 'e-mail' );
+	$form['field_zip_code']['und']['0']['value']['#title'] = t( 'ZIP code' );
+	$form['field_job_title']['und']['0']['value']['#title'] = t( 'Job title' );
+	$form['field_zip_code']['und']['0']['value']['#maxlength'] = 5;
+	$form['field_zip_code']['und']['0']['value']['#weight'] = 7;
+	unset($form['account']['current_pass']['#description']);
+	$form['account']['current_pass']['#prefix'] = '<div>';
+	$form['account']['current_pass']['#suffix'] = '<div class="curr-pwd-note">Enter your current password to change the e-mail address or password.</div></div>';
+	$form['account']['mail']['#prefix'] = '<div class="clearfix">';
+  $form['account']['mail']['#suffix'] = '</div>';
+}
+
+function pfe_lyrica_on_demand_form_user_profile_form_validate(&$form, &$form_state) {
+	$errors = form_get_errors();
+	if ($errors) {
+		form_clear_error();
+		$error_msg = drupal_get_messages('error');
+		$remove_msg = array();
+
+		foreach ($errors as $key => $val) {
+			if ($key == 'mail') {
+				$remove_msg[] = $val;
+				unset($errors[$key]);
+			}
+			 if ($key == 'field_zip_code') {
+				 $remove_msg[] = $val;
+				 unset($errors[$key]);
+			 }
+		}
+		foreach ($errors as $name => $error) {
+			form_set_error($name, check_plain($error));
+			$remove_msg[] = $error;
+		}
+	}
+	$user_pass = $form_state['values']['pass'];
+	$user_zip_code = $form_state['values']['field_zip_code']['und']['0']['value'];
+	$user_email = $form_state['values']['mail'];	
+	if (empty($user_email) ) {
+		form_set_error('mail', 'Invalid e-mail');
+	}
+	elseif (!empty($user_email) && !valid_email_address($user_email) ) {
+	 form_set_error('mail', 'Invalid e-mail');
+	}
+	
+	if (!empty($user_pass)) {
+		if (strlen($user_pass) < 6) {
+			form_set_error('pass', 'Password must have atleast 6 characters');
+		}
+	}
+	
+	if (!empty ($user_zip_code)) {
+		if (!is_numeric($user_zip_code)){
+			form_set_error('field_zip_code', 'ZIP code maust have 5 digits');
+		}
+		else if (strlen($user_zip_code) < 5) {
+			form_set_error('field_zip_code', 'ZIP code maust have 5 digits');
+		}
+	}
+	
+	$account = $form['#user'];
+	// Trim whitespace from mail, to prevent confusing 'e-mail not valid' warnings often caused by cutting and pasting.
+	$mail = trim($form_state['values']['mail']);
+	form_set_value($form['account']['mail'], $mail, $form_state);
+	$status = (bool) db_select('users')->fields('users', array('uid'))->condition('uid', $account->uid, '<>')->condition('mail', db_like($form_state['values']['mail']), 'LIKE')->range(0, 1)->execute()->fetchField();
+	// Validate the e-mail address, and check if it is taken by an existing user.
+	if ($error_msg = user_validate_mail($form_state['values']['mail'])) {
+		form_set_error('mail', $error_msg);
+	}
+	elseif ($status) {
+		// Format error message dependent on whether the user is logged in or not.
+		if ($GLOBALS['user']->uid) {
+			form_set_error('mail', t('%email is already registered.', array('%email' => $form_state['values']['mail'])));
+		}
+	}
+}
+
+function pfe_lyrica_on_demand_form_user_profile_submit(&$form, &$form_state) {
+  drupal_goto('user');
+}
+
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function pfe_lyrica_on_demand_form_user_register_form_alter(&$form, &$form_state, $form_id) {
+  $form['account']['pass']['#process'] = array('form_process_password_confirm', 'lyrica_password_confirm');
+  $form['#prefix'] = '<div id="register-form-wrapper" class="register-form popup-form"><h3>Create account</h3>';
+  $form['#suffix'] = '</div>';
+  $form['pass'] = $form['account']['pass'];
+  $form['pass']['#weight'] = 6;
+  unset($form['account']['pass']);
+  unset($form['account']['mail']['#description']);
+  unset($form['field_name']['und']['0']['value']['#title']);
+  unset($form['field_job_title']['und']['0']['value']['#title']);
+  unset($form['field_organization']['und']['0']['value']['#title']);
+  unset($form['field_zip_code']['und']['0']['value']['#title']);
+  unset($form['account']['mail']['#title']);
+  unset($form['account']['pass']['#description']);
+  $form['field_zip_code']['und']['0']['value']['#maxlength'] = 5;
+  $form['field_zip_code']['und']['0']['value']['#weight'] = 7;
+  $form['field_zip_code']['und']['0']['value']['#attributes']['placeholder'] = t( 'zip code (optional)' );
+  $form['field_name']['und']['0']['value']['#attributes']['placeholder'] = t( 'name' );
+  $form['field_job_title']['und']['0']['value']['#attributes']['placeholder'] = t( 'job title' );
+  $form['field_organization']['und']['0']['value']['#attributes']['placeholder'] = t( 'organization' );
+  $form['account']['mail']['#attributes']['placeholder'] = t( 'e-mail' );
+  $form['actions']['submit']['#value'] = t('SUBMIT');
+  array_unshift($form['#validate'], 'pfe_lyrica_on_demand_form_user_register_form_validate');
+	watchdog('account error' , '<pre>' . print_r(form_get_errors(), true) . '</pre>');
+}
+
+function pfe_lyrica_on_demand_form_user_register_form_validate(&$form, &$form_state) {
+	$errors = form_get_errors();
+	$error_msg = drupal_get_messages('error');
+	if ($errors) {
+		form_clear_error();
+		
+		$remove_msg = array();
+		foreach ($errors as $key => $val) {
+			if ($key == 'mail') {
+				$remove_msg[] = $val;
+				unset($errors[$key]);
+			}
+		if ($key == 'field_zip_code') {
+				 $remove_msg[] = $val;
+				 unset($errors[$key]);
+			 }
+		}
+		foreach ($errors as $name => $error) {
+			form_set_error($name, check_plain($error));
+			$remove_msg[] = $error;
+		}
+	}
+
+	$user_email = $form_state['values']['mail'];
+	$user_pass = $form_state['values']['pass'];
+	$user_zip_code = $form_state['values']['field_zip_code']['und']['0']['value'];
+	if ( empty( $user_email ) ) {
+	 form_set_error('mail', 'Enter e-mail');
+	}
+	elseif ( !empty($user_email) && !valid_email_address($user_email) ) {
+	 form_set_error('mail', 'Invalid e-mail');
+	}
+	
+	if (!empty($user_pass)) {
+		if (strlen($user_pass) < 6) {
+			form_set_error('pass', 'Password must have atleast 6 characters');
+		}
+	}
+	
+	if(!empty ($user_zip_code)) {
+		if (!is_numeric($user_zip_code)){
+			form_set_error('field_zip_code', 'ZIP code must have 5 digits');
+		}
+		else if (strlen($user_zip_code) < 5) {
+			form_set_error('field_zip_code', 'ZIP code maust have 5 digits');
+		}
+	}
+	
+	$account = $form['#user'];
+	// Trim whitespace from mail, to prevent confusing 'e-mail not valid' warnings often caused by cutting and pasting.
+	$mail = trim($form_state['values']['mail']);
+	form_set_value($form['account']['mail'], $mail, $form_state);
+	$status = (bool) db_select('users')->fields('users', array('uid'))->condition('uid', $account->uid, '<>')->condition('mail', db_like($form_state['values']['mail']), 'LIKE')->range(0, 1)->execute()->fetchField();
+	// Validate the e-mail address, and check if it is taken by an existing user.
+	if ($error_msg = user_validate_mail($form_state['values']['mail'])) {
+		form_set_error('mail', $error_msg);
+	}
+	elseif ($status) {
+		// Format error message dependent on whether the user is logged in or not.
+		if (!$GLOBALS['user']->uid) {
+			form_set_error('mail', t('%email is already registered.', array('%email' => $form_state['values']['mail'])));
+		}
+	}
+}
+
+function lyrica_profile_password_confirm($element) {
+  $element['pass1']['#title'] = 'New password';
+  $element['pass1']['#attributes']['placeholder'] = t('password');
+  $element['pass2']['#attributes']['placeholder'] = t('confirm password');
+  return $element;
+}
+
+function lyrica_password_confirm($element) {
+  $element['pass1']['#title'] = '';
+  $element['pass2']['#title'] = '';
+  $element['pass1']['#attributes']['placeholder'] = t('password');
+  $element['pass2']['#attributes']['placeholder'] = t('confirm password');
+  unset($element['#description']);
+  return $element;
+}
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function pfe_lyrica_on_demand_form_user_pass_alter(&$form, &$form_state) {
+	$form['#validate'][] = 'pfe_lyrica_on_demand_user_pass_validate';
+	unset($form['name']['#title']);
+	$form['#prefix'] = '<div id="forgot-password-form-wrapper" class="forgot-password-form popup-form"><h3>Forgot your password?</h3></br> Enter your e-mail below and we\'ll </br>send you a temporary one.';
+  $form['#suffix'] = '</div>';
+	$form['name']['#attributes']['placeholder'] = t( 'e-mail' );
+	$form['actions']['submit']['#value'] = t( 'SUBMIT' );
+}
+
+/**
+ * Custom forgot password form validate handler.
+ */
+function pfe_lyrica_on_demand_user_pass_validate(&$form, &$form_state) {
+	global $user;
+   $errors = form_get_errors();
+
+    if ($errors) {
+      form_clear_error();
+      $error_msg = drupal_get_messages('error');
+      $remove_msg = array();
+
+      foreach ($errors as $key => $val) {
+        if ($key == 'name') {
+          $remove_msg[] = $val;
+          unset($errors[$key]);
+        }
+        if ($key == 'pass') {
+          $remove_msg[] = $val;
+          unset($errors[$key]);
+        }
+      }
+      foreach ($errors as $name => $error) {
+        form_set_error($name, check_plain($error));
+        $remove_msg[] = $error;
+      }
+    }
+   $user_email = filter_xss($form_state['values']['name']);
+   if ( empty( $user_email ) ) {
+     form_set_error('name', 'Enter e-mail');
+   }
+   elseif ( !empty($user_email) && !valid_email_address($user_email) ) {
+     form_set_error('name', 'Invalid e-mail');
+   }
+   else {
+     $muser = user_load_by_mail($user_email);
+     if ( !$muser ) {
+         form_set_error('name', 'Sorry, ' . $user_email . ' is not recognized as an e-mail address.');
+     }
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function pfe_lyrica_on_demand_form_user_login_alter(&$form, &$form_state, $form_id) {
+  $form['#attributes']['class'] = 'login-form';
+	$form['name']['#title'] = 'e-mail';
+	$form['pass']['#title'] = 'password';
+  $form['actions']['#prefix'] = '<div class="submit-wrapper"><div class="submit-append">&nbsp;</div>';
+  $form['actions']['#suffix'] = '</div>';
+	$form['actions']['create_account'] = array(
+	  '#markup' => '<div class="create-account-btn">' . l(t('Create account'), 'user/register/nojs', array('attributes' => array('class' => 'ctools-use-modal ctools-modal-create-account-style'))) . '</div>');
+	$form['actions']['forgot_password'] = array(
+	  '#markup' => '<div class="forgot-password-btn clearfix">' . l(t('Forgot your password?'), 'user/password/nojs', array('attributes' => array('class' => 'ctools-use-modal ctools-modal-forgot-password-style'))) . '</div>');
+	unset($form['name']['#description']);
+	unset($form['pass']['#description']);
+	$form['#validate'][] = 'pfe_lyrica_on_demand_form_user_login_validate';
+	$form['#edit-submit'][] = 'pfe_lyrica_on_demand_form_user_login_submit';
+	$form['captcha']['#prefix'] = '<div class="captcha-wrapper">';
+  $form['captcha']['#suffix'] = '</div>';
+}
+
+function pfe_lyrica_on_demand_user_login(&$edit, $account) {
+  $edit['redirect'] = 'home';
+}
+
+/**
+ * Custom login form validate handler.
+ */
+function pfe_lyrica_on_demand_form_user_login_validate(&$form, &$form_state) {
+	global $language, $user;
+	$user_details = user_load($user->uid);
+	$errors = form_get_errors();
+	if ($errors) {
+	  form_clear_error();
+	  $error_msg = drupal_get_messages('error');
+	  $remove_msg = array();
+	  foreach ($errors as $key => $val) {
+			if ($key == 'name') {
+				$remove_msg[] = $val;
+				unset($errors[$key]);
+			}
+			if ($key == 'pass') {
+				$remove_msg[] = $val;
+				unset($errors[$key]);
+			}
+	  }
+	  foreach ($errors as $name => $error) {
+			form_set_error($name, $error);
+			$remove_msg[] = $error;
+		}
+	}
+	$user_email = $form_state['values']['name'];
+	$user_pass = $form_state['values']['pass'];
+	if (!empty($user_email)) {
+		if (isset($form_state['values']['email'])) {
+			if (!valid_email_address($form_state['values']['email'])) {
+				form_set_error('name', 'Invalid e-mail');
+		echo "!empty user email";
+			}
+		}
+		else {
+			form_set_error('name', 'Invalid e-mail');
+		}
+	}
+	elseif (empty($user_email)) {
+		form_set_error('name', 'Invalid e-mail');
+	}
+
+	if (!empty($user_pass)) {
+		if (isset($form_state['values']['email'])) {
+			if (!user_authenticate($form_state['values']['name'], $user_pass)) {
+				form_set_error('pass', 'Wrong e-mail/password');
+			}
+		}
+		else {
+			form_set_error('pass', 'Wrong e-mail/password');
+		}
+	}
+	elseif (empty($user_pass)) {
+		form_set_error('pass', 'Incorrect password');
+	}
+}
+
+/**
+ * Custom user login form submit handler.
+ */
+function pfe_lyrica_on_demand_form_user_login_submit(&$form, &$form_state) {
+  user_login_submit($form, $form_state);
+  $form['redirect'] = '/home';
+}
+

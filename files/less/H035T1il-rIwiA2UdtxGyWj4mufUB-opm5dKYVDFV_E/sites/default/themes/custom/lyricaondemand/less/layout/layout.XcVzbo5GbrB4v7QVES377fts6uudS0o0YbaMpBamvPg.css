@@ -1,0 +1,375 @@
+/****************************************
+ ----------------------------------------
+ CSS FOR LAYOUT STARTS HERE
+ ----------------------------------------
+ ***************************************/
+/****************************************
+ ----------------------------------------
+ LESS VARIABLES
+ ----------------------------------------
+ ***************************************/
+/****MEDIA QUERY****/
+/****Font Styling****/
+/****Font Sizes****/
+/****color codes****/
+/****BASE URL****/
+/****Display Properties****/
+/****Text align properties****/
+/****Float properties****/
+/****Device Visibility****/
+/****Headings****/
+/****paragraph****/
+/****Border radius****/
+/****Box sizing****/
+/* Form Styling */
+/* Brightcove video resizing */
+/* Placeholder Styling */
+/* Firefox 18- */
+/* Firefox 19+ */
+.FSAlbert {
+  font-family: "FS Albert Web Regular", Verdana, sans-serif;
+}
+.FSAlbertBold {
+  font-family: "FS Albert Web Bold", Verdana, sans-serif;
+}
+.FSAlbertLight {
+  font-family: "FS Albert Web Light", Verdana, sans-serif;
+}
+input {
+  outline: none;
+}
+.displayblock {
+  display: block;
+}
+.displaynone {
+  display: none;
+}
+.displayinblk {
+  display: inline-block;
+}
+.displayinline {
+  display: inline;
+}
+.displaytable {
+  display: table;
+}
+.displaytablerow {
+  display: table-row;
+}
+.displaytablecell {
+  display: table-cell;
+}
+.bgnone {
+  background: none;
+}
+.overflowhidden {
+  overflow: hidden;
+}
+.vertical-top {
+  vertical-align: top;
+}
+.vertical-middle {
+  vertical-align: middle;
+}
+.vertical-bottom {
+  vertical-align: bottom;
+}
+.alignr {
+  text-align: right;
+}
+.alignl {
+  text-align: left;
+}
+.alignc {
+  text-align: center;
+}
+.textdnone {
+  text-decoration: none;
+}
+.textdline {
+  text-decoration: underline;
+}
+.font-normal {
+  font-weight: normal;
+}
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
+.fn {
+  float: none;
+}
+.cn {
+  clear: none;
+}
+.clrbth {
+  clear: both;
+}
+.clr {
+  clear: both;
+  overflow: hidden;
+}
+.fullwidth {
+  width: 100%;
+}
+.autowidth {
+  width: auto;
+}
+.margin0 {
+  margin: 0;
+}
+.padding0 {
+  padding: 0;
+}
+.prelative {
+  position: relative;
+}
+.pabsolute {
+  position: absolute;
+}
+.pstatic {
+  position: static;
+}
+.pfixed {
+  position: fixed;
+}
+.left0 {
+  left: 0;
+}
+.top0 {
+  top: 0;
+}
+.right0 {
+  right: 0;
+}
+.bottom0 {
+  bottom: 0;
+}
+.bordernone {
+  border: 0;
+}
+.visible-desk {
+  display: block;
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px), only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  .visible-desk {
+    display: none;
+  }
+}
+@media only screen and (max-width: 767px), only screen and (max-device-width: 767px) {
+  .visible-desk {
+    display: none;
+  }
+}
+.visible-tab {
+  display: none;
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px), only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  .visible-tab {
+    display: block;
+  }
+}
+@media only screen and (max-width: 767px), only screen and (max-device-width: 767px) {
+  .visible-tab {
+    display: none;
+  }
+}
+.visible-desk.visible-tab {
+  display: block;
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px), only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  .visible-desk.visible-tab {
+    display: block;
+  }
+}
+@media only screen and (max-width: 767px), only screen and (max-device-width: 767px) {
+  .visible-desk.visible-tab {
+    display: none;
+  }
+}
+.hidden-mob {
+  display: block;
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px), only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  .hidden-mob {
+    display: block;
+  }
+}
+@media only screen and (max-width: 767px), only screen and (max-device-width: 767px) {
+  .hidden-mob {
+    display: none;
+  }
+}
+.visible-mob {
+  display: none;
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px), only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  .visible-mob {
+    display: none;
+  }
+}
+@media only screen and (max-width: 767px), only screen and (max-device-width: 767px) {
+  .visible-mob {
+    display: block;
+  }
+}
+h1 {
+  font-weight: normal;
+  color: #0093cf;
+  margin: 0 0 20px 0;
+}
+.front h1.page-title {
+  display: none;
+}
+h2 {
+  font-weight: normal;
+  color: blue;
+}
+h3 {
+  font-weight: normal;
+  color: #0093cf;
+}
+h4 {
+  color: #0093cf;
+  font-weight: normal;
+}
+p {
+  padding-top: 5px;
+  padding-bottom: 10px;
+}
+p,
+ul li,
+ol li {
+  color: #555555;
+}
+a,
+a:visited,
+a:active {
+  text-decoration: none;
+  color: #0093cf;
+  cursor: pointer;
+}
+a:active {
+  text-decoration: none;
+}
+sup {
+  top: -8px;
+  font-size: 50%;
+}
+ul li.menu__item {
+  list-style-type: none;
+  list-style-image: none;
+}
+html,
+body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+body {
+  font-size: 18.98px;
+  color: #555555;
+}
+body.no-scrollable {
+  overflow: hidden;
+  position: fixed;
+}
+.skip-link__wrapper {
+  display: none;
+}
+form .form-required {
+  display: none;
+}
+.outer-container {
+  position: relative;
+  height: 0;
+  padding-bottom: 56.25%;
+}
+.outer-container .video-loader img {
+  position: absolute;
+  width: 10%;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%,-50%);
+}
+.BrightcoveExperience {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+::-webkit-input-placeholder {
+  font-family: "FS Albert Web Light", Verdana, sans-serif;
+}
+:-moz-placeholder {
+  font-family: "FS Albert Web Light", Verdana, sans-serif;
+}
+::-moz-placeholder {
+  font-family: "FS Albert Web Light", Verdana, sans-serif;
+}
+:-ms-input-placeholder {
+  font-family: "FS Albert Web Light", Verdana, sans-serif;
+}
+.page-wrapper {
+  margin: 0 auto;
+  width: 100%;
+}
+.page-wrapper .header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1;
+}
+.page-wrapper .header .head-wrap {
+  width: 100%;
+  display: table;
+  height: 100%;
+  max-width: 1170px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+.page-wrapper .navigation-wrap {
+  position: fixed;
+  left: 0;
+  top: 0;
+  max-width: 272px;
+  height: 100%;
+  z-index: -1;
+  opacity: 0;
+}
+@media only screen and (max-width: 767px), only screen and (max-device-width: 767px) {
+  .page-wrapper .navigation-wrap {
+    max-width: 142px;
+    width: 40%;
+  }
+}
+.page-wrapper .main {
+  width: 100%;
+  max-width: 1170px;
+  margin: 0 auto;
+  padding-bottom: 180px;
+  padding-top: 144px;
+}
+@media only screen and (max-width: 767px), only screen and (max-device-width: 767px) {
+  .page-wrapper .main {
+    padding-top: 100px;
+    padding-bottom: 200px;
+  }
+}
+.page-wrapper .main .content {
+  margin: 0 2.7% 0 9.8%;
+  padding: 3.4% 0 0 0;
+}
+.page-wrapper .footer-holder {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+}
+.page-wrapper .footer-holder .footer-wrap {
+  max-width: 1170px;
+  margin: 0 auto;
+}

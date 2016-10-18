@@ -1,0 +1,126 @@
+/****************************************
+ ----------------------------------------
+ CSS FOR POPUP STARTS HERE
+ ----------------------------------------
+ ***************************************/
+@import url('../common.less');
+
+@input_bg_color: #e7e7e7;
+
+#modalBackdrop {
+	background: rgb(0,0,0) !important; /* Override default inline style */
+	opacity: 0.8 !important; /* Override default inline style */
+}
+#modalContent {
+	position: fixed !important;
+	top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%);
+    max-height: 100%;
+    min-width: 280px;
+	.ctools-modal-content {
+		.bordernone;
+		.border-radius(3px);
+		margin: 0 auto;
+		height: auto !important;
+		@media @mobile {
+			width: 90% !important;
+		}
+		.modal-header {
+			.displaynone;
+		}
+		.modal-content {
+			width: 100% !important;
+			height: auto !important;
+			.popup-form {
+				.alignc;
+				.FSAlbertLight;
+				color: #646464;
+				max-width: 300px;
+				margin: 0 auto;
+				h3 {
+					.FSAlbertBold;
+					color: @blue;
+					font-size: 25.7px;
+					@media @mobile {
+						font-size: 20.7px;
+					}
+				}
+				form {
+					input {
+						.fullwidth;
+						.FSAlbertLight;
+						.bordernone;
+						.border-radius(3px);
+						background-color: @input_bg_color;
+						color: #646464;
+						padding: 2.6%;
+						margin: 4.4% 0;
+						height: 37.5px;
+						&:-webkit-autofill {
+							border: 2px solid #e3e3e3;
+							-webkit-box-shadow: 0 0 0 1000px @input_bg_color inset;
+						}
+					}
+					.form-actions .form-submit {
+						.fullwidth;
+						.displayblock;
+						.FSAlbertBold;
+						color: @white;
+						max-width: 148px;
+						height: 44px;
+						margin: 5% auto;
+						background-color: @blue;
+					}
+					.error:not(input) {
+						.bordernone;
+						.bgnone;
+						.margin0;
+						.alignl;
+						color: #ff0003;
+						padding-left: 8px;
+						margin: -12px 0;
+						font-size: 13.92px;
+					}
+					.captcha {
+						.displaynone;
+					}
+				}
+				&.register-form {
+					input {
+						font-size: 17.99px;
+						&.form-submit {
+							font-size: 19.27px;
+						}
+					}
+				}
+				&.forgot-password-form {
+					.FSAlbertLight;
+					font-size: 17.13px;
+					input {
+						font-size: 19.27px;
+					}
+				}
+				&.request-sent-popup {
+					font-size: 17.13px;
+					.close-popup-button {
+						.fullwidth;
+					    .displayblock;
+					    .FSAlbertBold;
+					    .bordernone;
+					    .border-radius(3px);
+					    font-size: 19.27px;
+						color: @white;
+						max-width: 148px;
+						height: 44px;
+						margin: 25px auto 15px auto;
+						background-color: @blue;
+					}
+				}
+			}
+		}
+	}
+}
+.throbber {
+	.displaynone;
+}
